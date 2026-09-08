@@ -1,5 +1,3 @@
-# import tiktoken as tk
-# from torch.utils.data import DataLoader, Dataset
 import torch
 
 input_ids = torch.tensor([2,3,5,1])
