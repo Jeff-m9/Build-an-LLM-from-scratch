@@ -32,3 +32,21 @@ attn_weights_2_naive = softmax_naive(attn_scores_2)
 
 # Softmaxing using pytorch-softmax
 attn_weights_2 = torch.softmax(attn_scores_2, dim=0)
+
+# Calculating the context vector
+context_vec_2 = torch.zeros(query.shape)
+for i, x_i in enumerate(inputs):
+    context_vec_2 += attn_weights_2[i]*x_i
+# print(context_vec_2)
+
+
+# Finding the attention scores for all inputs
+attn_scores = inputs @ inputs.T
+# print(attn_scores)
+
+# Normalizing the attention scores to get the weights
+attn_weights = torch.softmax(attn_scores, dim=-1)
+# print(attn_weights)
+
+all_context_vec = attn_weights @ inputs
+print(all_context_vec)
